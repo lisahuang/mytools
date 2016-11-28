@@ -1,0 +1,15 @@
+#ssh-keygen -t rsa # ENTER to every field
+#ssh-copy-id myname@somehost
+echo $1
+if [ "$1" = "matt" ]
+then
+    ssh lisa.huang@10.128.225.117
+elif [ "$1" = "uk" ]
+then
+   ssh lisa.huang@10.32.33.61
+elif [ "$1" = "ch" ]
+then
+   ssh cloudops@10.36.36.120
+else
+    ssh lisa.huang@10.128.36.120
+fi 
