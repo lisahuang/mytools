@@ -12,7 +12,7 @@ curl -X POST \
      https://login.microsoftonline.com/$TENANT_ID/oauth2/token
 
 curl -X POST \
-       -d 'grant_type=client_credentials&client_id=d5e79e50-dbfe-4181-9f6b-c84bc9c8d042&client_secret=KuuVMBcdzkQVbk1hqBz2BhbAUOAxWQMARnWlDUUbwTw=&resource=https%3A%2F%2Fmanagement.azure.com%2F'  https://login.microsoftonline.com/7e652abe-8af5-464f-a272-9c4c5d6a9170/oauth2/token
+       -d 'grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET=&resource=https%3A%2F%2Fmanagement.azure.com%2F'  https://login.microsoftonline.com/$SUBSCRIPTION_ID/oauth2/token
 
 
 export ACCESS_TOKEN=<token>
