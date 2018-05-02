@@ -1,0 +1,30 @@
+
+export SUBSCRIPTION_ID=<sub_id>
+export TENANT_ID=<tenant_id>
+export CLIENT_ID=<client_id>
+export APP_ID=$CLIENT_ID
+export CLIENT_SECRET=<client_secret>
+export PASSWORD=$CLIENT_SECRET
+export API_VERSION=2016-08-01
+
+curl -X POST \
+       -d 'grant_type=client_credentials&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET&resource=https%3A%2F%2Fmanagement.azure.com%2F' \
+     https://login.microsoftonline.com/$TENANT_ID/oauth2/token
+
+curl -X POST \
+       -d 'grant_type=client_credentials&client_id=d5e79e50-dbfe-4181-9f6b-c84bc9c8d042&client_secret=KuuVMBcdzkQVbk1hqBz2BhbAUOAxWQMARnWlDUUbwTw=&resource=https%3A%2F%2Fmanagement.azure.com%2F'  https://login.microsoftonline.com/7e652abe-8af5-464f-a272-9c4c5d6a9170/oauth2/token
+
+
+export ACCESS_TOKEN=<token>
+
+test subscritions get 
+
+curl -X GET \
+     -H "Authorization: Bearer $ACCESS_TOKEN" \
+     -H "Content-Type: application/json" \
+     https://management.azure.com/subscriptions/$SUBSCRIPTION_ID?api-version=2016-09-01
+
+curl -X GET \
+      -H "Authorization: Bearer $ACCESS_TOKEN" \
+      -H 'Content-Type: application/json' \
+      'https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp%20ge%20%272018-05-01T00:00:00Z%27'
